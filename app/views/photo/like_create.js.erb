@@ -1,0 +1,8 @@
+
+<% if @like == true%>
+$("#my_photos_<%=params[:photo_id] %>").html("<%= escape_javascript(render 'user_likes',:photo=>@photo) %>")
+<% else%> 
+alert("Already Liked")
+<% end %>
+
+

@@ -1,0 +1,13 @@
+ <div class="content-section-b">
+	 <div class="container">
+  		<div id="masonry-container" class="masonry-container transitions-enabled centered masonry-brick">
+			<div id="photos">
+				<%= render  'photo/show_list' %>
+			</div>
+	    </div>
+	</div>
+</div>
+
+<div id="infinite-scrolling">
+	<%= will_paginate @photos %>
+</div>

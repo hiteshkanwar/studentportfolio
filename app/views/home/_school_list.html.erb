@@ -1,0 +1,29 @@
+<% if @student.student_schools.blank? %>
+  <table>
+    <tr>
+      <th>No.</th>
+      <th>School Name</th>
+      <th>School Description</th>
+      <th>Action</th>
+    </tr>
+    <% @schools.each_with_index do |school,index| %>
+      <tr>
+        <td><%= index+1%></td>
+        <td><%= school.school_name %></td>
+        <td><%= school.description %></td>
+        <td><%= link_to "Apply", home_student_request_path(school),remote: true %></td>
+      </tr>
+  <% end %>
+  </table>
+<% else %>  
+  You have a request for 
+  <b> 
+    <%= @student.student_schools.first.school.school_name %> 
+  </b>
+  is 
+  <% if @student.student_schools.first.status %> 
+    <b><i>Approved</i></b>
+  <%else%>
+    <b><i>Pending</i></b>
+  <%end%>
+<% end %>

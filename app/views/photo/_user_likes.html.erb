@@ -1,0 +1,8 @@
+<% if photo.likes.where(:user_id => current_user.id).blank? %>
+ <%=link_to "Like", photo_like_create_path(photo),:class=>"btn btn-success" ,:method=>"post", remote: true %>
+ <% else %>
+       <%=link_to "Unlike", photo_unlike_path(photo), :method=>"post",:class=>"btn btn-danger" , remote: true%>
+ <% end %> 
+
+
+<div class="pull-right"><span class="badge"><%= photo.likes.count %></span> likes</div>

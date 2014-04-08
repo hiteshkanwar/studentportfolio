@@ -1,0 +1,6 @@
+<% if @student.student_schools.blank? %>
+	alert("Successfully Applied for School")	
+<% else %>
+	alert("You have already applied for the school")
+<% end %>
+$(".approve").html("<%= escape_javascript(render 'school_list') %>");

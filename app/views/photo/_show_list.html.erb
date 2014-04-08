@@ -1,0 +1,12 @@
+<%@photos.each do |photo| %>
+	<div class="box">
+	    <a href="<%= photo.avatar.url %>" class="fancybox" data-fancybox-group="gallery" > 
+	    	<%= image_tag photo.avatar.url(:medium) %> 
+		</a>
+		<h5>
+			<div id="my_photos_<%=photo.id%>">
+			       <%= render "user_likes", :photo => photo %>
+			</div>
+		</h5>
+	</div>
+<% end %>

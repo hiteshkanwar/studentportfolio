@@ -1,0 +1,13 @@
+<% if user_signed_in?%>
+  <h2>I am a <%=@role%><h2>
+  
+    
+  <h3>First Name : <%= current_user.firstname %></h3> 
+  <h3>Last Name :<%= current_user.lastname %></h3>
+  <% if @role=="school" %>
+    <h3>School Name :</h3> <%=current_user.school.school_name %><br/>
+    <h3>Description :</h3> <%= current_user.school.description %>
+  <% else %>
+    <h3>Description :</h3> <%= current_user.student.description %>
+  <% end %>
+<% end %>

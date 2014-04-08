@@ -1,0 +1,35 @@
+<%=form_for @feed, url: home_create_path do |f| %>
+<%=f.label :content%>
+<%=f.text_area :content, :rows=>"3" %><br/><br/>
+<%= select_tag 'user_id[]', options_from_collection_for_select(@user,"id","firstname"),:multiple => true  %><br/><br/>
+
+
+
+<%=f.submit "submit"%>
+<%end%>
+
+<h2><b>Students Information </b></h2>
+<table>
+	<tr>
+	<th>student name</th>
+    <th>content</th> 
+   </tr>
+   <%@feeds.each do |feed| %>
+    <tr>
+    <td>
+	<% feed.feed_students.each_with_index do |feed_student,index| %>
+		<%=index+1%>. <%= feed_student.student.user.firstname%><br/>
+	<% end %>
+    </td>
+    <td><%=feed.content %></td>
+   </tr>
+   <%end%>
+</table>
+
+
+<%#=select_tag 'stores[]', options_for_select(
+@stores.map {|s| [s.store_name, s.store_id]}, 
+@user.stores.map {|j| j.store_id}
+), :multiple => true, :size => 10%>
+
+

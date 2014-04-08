@@ -1,0 +1,95 @@
+<div class="content-section-b">
+   <div class="container">
+    <div class="row">
+
+<div class="col-md-6">
+ <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class=>"form-horizontal"  ,:role=>"form"}) do |f| %>
+  <%= devise_error_messages! %>
+
+  <h2>Sign up</h2>
+  
+ <%= select_tag :role, options_for_select(%w[student school]), :prompt=>"Select Role",:class=>"form-control" %><br/><br/>
+  <div class="dynamic_content">
+    <div class="form-group">
+        <%= f.label :email, :class=>"col-sm-2 control-label"%>
+      <div class="col-sm-10">
+        <%= f.email_field :email, autofocus: true,:class=>"form-control" %>
+      </div>
+   </div>
+   <div class="form-group">
+         <%= f.label :firstname,:class=>"col-sm-2 control-label"%>
+     <div class="col-sm-10">
+         <%= f.text_field :firstname,:class=>"form-control" %>
+     </div>
+    </div>
+  <div class="form-group">
+     <%= f.label :lastname,:class=>"col-sm-2 control-label" %>
+       <div class="col-sm-10">
+         <%= f.text_field :lastname,:class=>"form-control"  %>
+      </div>
+  </div>
+ <div class="form-group">
+    <%= f.label :password ,:class=>"col-sm-2 control-label"%>
+      <div class="col-sm-10">
+        <%= f.password_field :password, autocomplete: "off",:class=>"form-control" %>
+     </div>
+   </div>
+  <div class="form-group">
+     <%= f.label :password_confirmation ,:class=>"col-sm-2 control-label"%>
+     <div class="col-sm-10">
+        <%= f.password_field :password_confirmation, autocomplete: "off",:class=>"form-control" %>
+     </div>
+ </div>
+ <div class="dynamic-role-form">
+    </div>
+  <div class="form-group">
+     <div class="col-sm-offset-2 col-sm-10"> 
+        <%= f.submit "Sign up",:class=>"btn btn-default" %>
+     </div>
+  </div>
+</div>
+</div>
+<% end %>
+
+ 
+
+ <div class="col-md-6">ghdhgfhgfhfghfgjfhj</div>
+
+
+
+
+<%= render "devise/shared/links" %>
+
+<script>
+$(".dynamic_content").hide()
+$(document).ready(function(){
+  $("#role").change(function(){
+    if($("#role option:selected").val() !="")
+    {
+      $(".dynamic_content").show()
+    }
+    else
+    {
+      $(".dynamic_content").hide()
+    }
+    $.ajax({
+  		method: "get",
+  		url: "<%= home_dynamic_form_path %>?role="+$("#role option:selected").val()
+  	})
+  });
+});
+</script>
+</div>
+</div>
+
+
+
+
+
+
+  
+
+
+
+
+ 
