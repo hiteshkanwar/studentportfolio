@@ -1,6 +1,6 @@
 
 class Photo < ActiveRecord::Base
-  attr_accessible :user_id,:avatar
+  attr_accessible :user_id,:avatar,:content
   belongs_to :user
   has_many :likes
   self.per_page = 9

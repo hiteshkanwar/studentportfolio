@@ -14,7 +14,7 @@ class PhotoController < ApplicationController
    @photo= Photo.find(params[:photo_id])
    if current_user.likes.where(:photo_id => params[:photo_id]).blank?
      @like = true
-     current_user.likes.create(:photo_id=>params[:photo_id])
+     current_user.likes.create(:photo_id=>params[:photo_id],:content=>params[:content])
   end
 end
 def unlike
